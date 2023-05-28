@@ -1,0 +1,82 @@
+{
+    "version": "2.0.0",
+    "presentation": {
+        "reveal": "never",
+        "panel": "new"
+    },
+    "tasks": [
+        {
+            "label": "Pico: build",
+            "type": "cmake",
+            "command": "build",
+            "targets": [
+                "ALL_BUILD"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+
+            "detail": "Build all projects"
+        },
+        {
+            "label": "Pico: Rebuild remote",
+            "type": "cmake",
+            "command": "cleanRebuild",
+            "targets": [
+                "ALL_BUILD"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+
+            "detail": "Clean & Rebuild Project"
+        },
+        {
+            "label": "Pico: Rebuild local",
+            "type": "cmake",
+            "command": "cleanRebuild",
+            "targets": [
+                "ALL_BUILD"
+            ],
+            "depensOn": "Pico: attach",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+
+            "detail": "Clean & Rebuild Project"
+        },
+        {
+            "label": "Pico: setup",
+            "type": "shell",
+            "command": "cp",
+            "args": [
+                "${env:PICO_SDK_PATH}/external/pico_sdk_import.cmake",
+                "${workspaceFolder}/"
+            ],
+
+            "detail": "Setup project for rp2040"
+        },
+        {
+            "label": "Pico: attach",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "attach_picoprobe.sh"
+            ],
+
+            "detail": "attach to rp2040"
+        }
+    ]
+}
