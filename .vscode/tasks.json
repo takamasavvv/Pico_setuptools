@@ -1,7 +1,8 @@
 {
     "version": "2.0.0",
     "presentation": {
-        "reveal": "never",
+        "reveal": "silent",
+        "close": true,
         "panel": "new"
     },
     "tasks": [
@@ -14,8 +15,7 @@
                 "ALL_BUILD"
             ],
             "group": {
-                "kind": "build",
-                "isDefault": true
+                "kind": "build"
             },
             "problemMatcher": [
                 "$gcc"
@@ -30,7 +30,8 @@
                 "ALL_BUILD"
             ],
             "group": {
-                "kind": "build"
+                "kind": "build",
+                "isDefault": true
             },
             "problemMatcher": [
                 "$gcc"

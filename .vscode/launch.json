@@ -14,7 +14,7 @@
                 "interface/cmsis-dap.cfg",
                 "target/rp2040.cfg"
             ],
-            "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+            "svdFile": "${workspaceFolder}/lib/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
             "runToEntryPoint": "main",
             "armToolchainPath": "/usr/bin/arm-none-eabi-gcc",
             "preLaunchTask": "Pico: Debug",
@@ -38,7 +38,7 @@
             "gdbTarget": "rpidev.local:3333",
             "device": "RP2040",
             "interface": "swd",
-            "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+            "svdFile": "${workspaceFolder}/lib/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
             "armToolchainPath": "/usr/bin/arm-none-eabi-gcc",
             "preLaunchTask": "Pico: Rebuild",
             "preRestartCommands": [
