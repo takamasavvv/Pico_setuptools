@@ -1,4 +1,4 @@
-# pico_setuptools
+# pico_ProjectBase
 setup tools for create raspberry pi pico project using visual studio code
 
 
