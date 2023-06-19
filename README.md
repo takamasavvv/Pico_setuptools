@@ -8,8 +8,10 @@ for windows
 https://learn.microsoft.com/ja-jp/windows/wsl/connect-usb
 https://github.com/dorssel/usbipd-win/releases
 
-for wsl
+```shell:"for wsl"
+
 sudo apt update
 sudo apt upgrade
 sudo apt install linux-tools-generic hwdata
 sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
+```
