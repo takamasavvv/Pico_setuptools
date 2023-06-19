@@ -1,0 +1,64 @@
+{
+    "version": "2.0.0",
+    "presentation": {
+        "reveal": "never",
+        "panel": "new"
+    },
+    "tasks": [
+        {
+            "label": "Pico: Build",
+            "detail": "Build all projects",
+            "type": "cmake",
+            "command": "build",
+            "targets": [
+                "ALL_BUILD"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Pico: Rebuild",
+            "detail": "Clean & Rebuild Project",
+            "type": "cmake",
+            "command": "cleanRebuild",
+            "targets": [
+                "ALL_BUILD"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "Pico: Attach",
+            "detail": "attach to rp2040",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "${workspaceFolder}/tool/attach_picoprobe.sh"
+            ],
+            "group": {
+                "kind": "none",
+            }
+        },
+        {
+            "label": "Pico: Debug",
+            "detail": "Debug Project",
+            "dependsOrder": "sequence",
+            "dependsOn":[
+                "Pico: Rebuild",
+                "Pico: Attach"
+            ],
+            "group": {
+                "kind": "none",
+            },
+        }
+    ]
+}

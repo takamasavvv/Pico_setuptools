@@ -2,17 +2,44 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug remote RP2040",
+            "name": "Debug RP2040",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "gdb-multiarch",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+            "runToEntryPoint": "main",
+            "armToolchainPath": "/usr/bin/arm-none-eabi-gcc",
+            "preLaunchTask": "Pico: Debug",
+            "preRestartCommands": [
+                "monitor halt",
+                "monitor reset 0"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "name": "Debug RP2040(remote)",
             "type": "cortex-debug",
             "cwd": "${workspaceFolder}",
             "executable": "${command:cmake.launchTargetPath}",
             "request": "launch",
             "servertype": "external",
-            "gdbPath": "/usr/bin/gdb-multiarch",
+            "gdbPath": "gdb-multiarch",
             "gdbTarget": "rpidev.local:3333",
             "device": "RP2040",
             "interface": "swd",
             "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+            "armToolchainPath": "/usr/bin/arm-none-eabi-gcc",
             "preLaunchTask": "Pico: Rebuild",
             "preRestartCommands": [
                 "monitor halt",
@@ -21,31 +48,7 @@
             "postRestartCommands": [
                 "break main",
                 "continue"
-            ],
-            "armToolchainPath": "/usr/bin/arm-none-eabi-gcc"
-        },
-        {
-            "name": "Debug local RP2040",
-            "type": "cortex-debug",
-            "cwd": "${workspaceFolder}",
-            "executable": "${command:cmake.launchTargetPath}",
-            "request": "launch",
-            "servertype": "openocd",
-            "gdbPath": "/usr/bin/gdb-multiarch",
-            "gdbTarget": "rpidev.local:3333",
-            "device": "RP2040",
-            "interface": "swd",
-            "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
-            "preLaunchTask": "Pico: Rebuild",
-            "preRestartCommands": [
-                "monitor halt",
-                "monitor reset 0"
-            ],
-            "postRestartCommands": [
-                "break main",
-                "continue"
-            ],
-            "armToolchainPath": "/usr/bin/arm-none-eabi-gcc"
+            ]
         }
     ]
 }
