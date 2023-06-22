@@ -9,19 +9,23 @@
             "type": "cortex-debug",
             "servertype": "openocd",
             "gdbPath": "gdb-multiarch",
+            "showDevDebugOutput": "raw",
             "device": "RP2040",
             "configFiles": [
                 "interface/cmsis-dap.cfg",
                 "target/rp2040.cfg"
             ],
+            "openOCDLaunchCommands": [
+                "adapter speed 3000"
+            ],
             "svdFile": "${workspaceFolder}/lib/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
             "runToEntryPoint": "main",
-            "armToolchainPath": "/usr/bin/arm-none-eabi-gcc",
+            "armToolchainPath": "/usr/bin/",
             "preLaunchTask": "Pico: Debug",
-            "preRestartCommands": [
-                "monitor halt",
-                "monitor reset 0"
-            ],
+            // "preRestartCommands": [
+            //     "monitor halt",
+            //     "monitor reset 0"
+            // ],
             "postRestartCommands": [
                 "break main",
                 "continue"
